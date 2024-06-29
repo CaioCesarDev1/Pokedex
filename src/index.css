@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: "K2D", sans-serif;
+}
+
+:root{
+	--color-card: rgba(255, 255, 255, 0.20);
+	--color-white: #ffffff;
+	--color-black: #0c0c0c;
+	--color-gray: #1B1B1E;
+	--color-fire: #ff7402;
+	--color-grass: #64BC3F;
+	--color-steel: #9eb7b8;
+	--color-water: #547EEC;
+	--color-psychic: #f366b9;
+	--color-ground: #D9B255;
+	--color-ice: #85CFCF;
+	--color-flying: #977EEC;
+	--color-ghost: #4d5b64;
+	--color-normal: #a4acaf;
+	--color-poison: #7e0058;
+	--color-rock: #a38c21;
+	--color-fighting: #d56723;
+	--color-dark: #707070;
+	--color-bug: #729f3f;
+	--color-dragon: linear-gradient(180deg, #53a4cf 50%, #f16e57 50%);
+	--color-electric: #ffd038;
+	--color-fairy: #fdb9e9;
+	--color-shadow: #7b62a3;
+	--color-unknow: #757575;
+
+	--color-primary: #006d77;
+	--color-primary-hover: #83c5be;
+	--color-grey-300: #4A4A4A;
+}
