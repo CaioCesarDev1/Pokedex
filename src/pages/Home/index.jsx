@@ -1,65 +1,26 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Pokeball from '../../assets/img/pokeball.svg';
 import PokeballBackground from '../../assets/img/pokeball_background.svg';
 import Pokedex from '../../assets/img/pokedex_logo.png';
 import Search from '../../assets/img/search.png';
 
+import useFetchPokemon from '../../hooks/useFetchPokemon';
+import usePokemonSearch from '../../hooks/usePokemonSearch';
+
 import PokemonCard from '../../components/PokemonCard';
 
 const Home = () => {
-    const [pokemonData, setPokemonData] = useState([]);
-    const [filteredPokemonData, setFilteredPokemonData] = useState([]);
-    const [searchTerm, setSearchTerm] = useState('');
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        const fetchAllPokemon = async () => {
-            try {
-                const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=1025');
-                const pokemonUrls = response.data.results.map(pokemon => pokemon.url);
-
-                const pokemonResponses = await Promise.all(pokemonUrls.map(url => axios.get(url)));
-                const allPokemonData = pokemonResponses.map(res => res.data);
-
-                setPokemonData(allPokemonData)
-                setFilteredPokemonData(allPokemonData)
-                setLoading(false)
-            } catch (error) {
-                console.error('Error fetching data', error)
-                setLoading(false)
-            }
-        };
-
-        fetchAllPokemon();
-    }, []);
-
-    const handleSearchChange = (event) => {
-        setSearchTerm(event.target.value);
-    }
-
-    const handleSearchSubmit = (event) => {
-        event.preventDefault();
-        if(searchTerm.trim() === '') {
-            setFilteredPokemonData(pokemonData)
-        } else {
-            const filterSearch = pokemonData.filter(pokemon =>
-                pokemon.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                pokemon.id.toString().includes(searchTerm)
-            );
-            setFilteredPokemonData(filterSearch)
-        }
-    }
+    const { pokemonData, loading } = useFetchPokemon();
+    const { searchTerm, handleSearchChange, handleSearchSubmit, filteredPokemonData } = usePokemonSearch(pokemonData);
 
     if (loading) {
-        
         return <div className='h-screen w-full '><div className=' h-full flex items-center justify-center my-auto'><img className='animate-spin w-22 h-22' src={Pokeball} alt="" /></div></div>;
     }
 
     return (
         <div className='relative'>
             <div className='fixed top-0 left-0 flex w-full h-full z-[-1]'>
-                <img src={PokeballBackground} alt="Pokeball Background" className='object-cover w-120 h-120'/>
+                <img src={PokeballBackground} alt="Pokeball Background" className='object-cover w-120 h-120' />
             </div>
 
             <nav className='shadow-xl h-20 backdrop-blur-md bg-gray-600/15 flex justify-center items-center'>
@@ -84,7 +45,7 @@ const Home = () => {
 
             <div className='w-auto h-auto grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 mt-16  mx-40  gap-16 justify-items-center '>
                 {filteredPokemonData.map((pokemon, key) => (
-                    <PokemonCard key={key} pokemon={pokemon}/>
+                    <PokemonCard key={key} pokemon={pokemon} />
                 ))}
             </div>
         </div>
