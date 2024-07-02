@@ -4,7 +4,11 @@ const useCustomNavigate  = () => {
     const navigate = useRouterNavigate();
 
     const handleNavigate = (path, id) => {
-        navigate(`${path}/${id}`)
+        if (id) {
+            navigate(`${path}/${id}`);
+        } else {
+            navigate(`/${path}`);
+        }
     };
 
     return handleNavigate;

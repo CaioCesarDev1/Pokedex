@@ -1,8 +1,8 @@
 import React from 'react';
 import Pokeball from '../../assets/img/pokeball.svg';
 import PokeballBackground from '../../assets/img/pokeball_background.svg';
-import Pokedex from '../../assets/img/pokedex_logo.png';
 import Search from '../../assets/img/search.png';
+import NaviBar from '../../components/NaviBar';
 
 import useFetchPokemon from '../../hooks/useFetchPokemon';
 import usePokemonSearch from '../../hooks/usePokemonSearch';
@@ -23,11 +23,7 @@ const Home = () => {
                 <img src={PokeballBackground} alt="Pokeball Background" className='object-cover w-120 h-120' />
             </div>
 
-            <nav className='shadow-xl h-20 backdrop-blur-md bg-gray-600/15 flex justify-center items-center'>
-                <div className=''>
-                    <img className='h-14' src={Pokedex} alt="Pokedex" />
-                </div>
-            </nav>
+            <NaviBar/>
 
             <form
                 className='flex backdrop-blur-md bg-gray-600/20 rounded-full items-center h-14 mt-16 w-auto mx-15 md:mx-30 sm:mx-12 lg:mx-40 px-6'
