@@ -7,7 +7,7 @@ import Type from "../../components/Type";
 import Weakness from "../../components/Weakness";
 import { CapitalizeFirstLetter, FormatId, FormatNumber } from '../../helper/helper';
 
-
+import BaseStatBar from "../../components/BaseStatBar";
 import { usePokemon } from '../../context/pokemonContext';
 import useFetchPokemonSpecies from "../../hooks/useFetchPokemonSpecies";
 
@@ -89,8 +89,9 @@ const Summary = () => {
                             </div>
                         </div>
                         {/* status */}
-                        <div className="w-1/2 bg-black">
-                                    <p> aaaaaaaaaaaaa</p>
+                        <div className="w-1/2 ">
+                            <p>Status Base</p>
+                            <BaseStatBar pokemon={pokemon}/>
                         </div>
                     </div>
                     {/* evoluções */}
