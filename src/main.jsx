@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { PokemonProvider } from './context/pokemonContext'
 import './index.css'
-import AppRoutes from './routes/routes'
+import AppRoutes from './routes/Routes'
 
 
 

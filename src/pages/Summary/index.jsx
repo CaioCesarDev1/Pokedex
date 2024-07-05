@@ -4,6 +4,7 @@ import Pokeball from '../../assets/img/pokeball.svg';
 import PokeballBackground from '../../assets/img/pokeball_background.svg';
 import NaviBar from '../../components/NaviBar';
 import Type from "../../components/Type";
+import Weakness from "../../components/Weakness";
 import { CapitalizeFirstLetter, FormatId, FormatNumber } from '../../helper/helper';
 
 
@@ -12,18 +13,19 @@ import useFetchPokemonSpecies from "../../hooks/useFetchPokemonSpecies";
 
 const Summary = () => {
     const { id } = useParams();
-    const { getPokemonId } = usePokemon();
+    const { getPokemonId, loading } = usePokemon();
     const { speciesData, loading: speciesLoading } = useFetchPokemonSpecies(id);
 
     const pokemon = getPokemonId(id);
-    const abilitiesList = pokemon.abilities;
-    const pokemonTypes = pokemon.types;
 
-    if (!pokemon || speciesLoading) {
+
+    if (!pokemon || speciesLoading || loading) {
         return <div className='h-screen w-full '><div className=' h-full flex items-center justify-center my-auto'><img className='animate-spin w-22 h-22' src={Pokeball} alt="" /></div></div>;
     }
 
-    const description = speciesData.flavor_text_entries.find(entry => entry.language.name === 'en');
+    const pokemonTypes = pokemon.types.map(t => t.type.name)
+    const abilitiesList = pokemon.abilities || [];
+    const description = speciesData?.flavor_text_entries?.find(entry => entry.language.name === 'en');
 
     return (
         // fundo e  navbar
@@ -35,7 +37,7 @@ const Summary = () => {
 
             <NaviBar />
 
-            <div className="flex flex-row h-full w-full ">
+            <div className="flex  flex-row h-full w-full ">
                 {/* imagem descrição  */}
                 <div className="flex flex-col mt-10 mx-10 max-w-96 h-96">
                     <div className="backdrop-blur-md bg-gray-600/20 rounded-lg">
@@ -47,10 +49,10 @@ const Summary = () => {
                     </div>
 
                 </div>
-                <div className="flex flex-col h-screen w-screen ">
-                    <div className="flex flex-row">
+                <div className="flex flex-col h-screen w-screen mr-10 ">
+                    <div className="flex flex-row w-full gap-4 my-10">
                         {/* informações gerais */}
-                        <div className="flex flex-col">
+                        <div className="flex flex-col w-1/2">
                             <div className="flex flex-row">
                                 <div className="flex flex-col">
                                     <p>#{FormatId(pokemon.id)}</p>
@@ -69,22 +71,26 @@ const Summary = () => {
                                 <p>Habilidades</p>
                                 <div className="flex flex-row">
                                     {abilitiesList.map((numberAbility, key) => (
-                                        <p>{CapitalizeFirstLetter(numberAbility.ability.name)}</p>
+                                        <p key={key}>{CapitalizeFirstLetter(numberAbility.ability.name)}</p>
                                     ))}
                                 </div>
                             </div>
                             <div className="flex flex-col">
                                 <p>Tipo</p>
-                                <div className="flex flex-row">
-                                    {pokemonTypes.map((types, key) => (
-                                        <Type key={key} type={types.type.name} />
+                                <div className="flex flex-row gap-4 ">
+                                    {pokemonTypes.map((type, key) => (
+                                        <Type key={key} type={type} />
                                     ))}
                                 </div>
+                            </div> 
+                            <div className="flex flex-col">
+                                <p>Fraquezas</p>
+                                <Weakness types={pokemonTypes} />
                             </div>
                         </div>
                         {/* status */}
-                        <div>
-
+                        <div className="w-1/2 bg-black">
+                                    <p> aaaaaaaaaaaaa</p>
                         </div>
                     </div>
                     {/* evoluções */}
