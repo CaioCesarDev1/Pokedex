@@ -94,8 +94,15 @@ const Summary = () => {
                             <BaseStatBar pokemon={pokemon}/>
                         </div>
                     </div>
-                    {/* evoluções */}
-                    <div>
+                    
+                    <div className=" h-full flex flex-row justify-center flex-wrap items-center w-full mb-16 gap-2 mr-10">
+                        <div className="w-64 h-64 bg-slate-800"></div>
+                        <div className="w-20 h-20 bg-red-700"></div>
+                        <div className="w-64 h-64 bg-slate-800"></div>
+                        <div className="w-20 h-20 bg-red-700"></div>
+                        <div className="w-64 h-64 bg-slate-800"></div>
+
+                        
 
                     </div>
                 </div>

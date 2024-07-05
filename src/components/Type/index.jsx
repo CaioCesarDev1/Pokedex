@@ -28,7 +28,7 @@ const Type = ({type}) => {
     const typeColor = typeColors[type] || 'bg-gray-600';
 
     return (
-        <div className={`h-8 w-28 flex justify-center items-center ${typeColor} rounded-lg shadow-[inset_0px_0px_20px_10px_#00000025] m-0 p-0`}>
+        <div className={`h-8 w-24 flex justify-center items-center ${typeColor} rounded-lg shadow-[inset_0px_0px_20px_10px_#00000025] m-0 p-0`}>
             <p className="w-auto h-auto text-center text-white text-lg">{CapitalizeFirstLetter(type)}</p>
         </div>
     )

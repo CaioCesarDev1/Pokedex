@@ -39,7 +39,7 @@ const Home = () => {
                 <button className=' mx-4 h-6 w-6' type='submit'><img className='h-6 w-6' src={Search} alt="" /></button>
             </form>
 
-            <div className='w-auto h-auto grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 mt-16  mx-40  gap-16 justify-items-center '>
+            <div className='w-auto h-auto flex flex-row justify-center flex-wrap  mt-16  mx-40  gap-8 '>
                 {filteredPokemonData.map((pokemon, key) => (
                     <PokemonCard key={key} pokemon={pokemon} />
                 ))}

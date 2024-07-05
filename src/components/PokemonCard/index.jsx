@@ -12,14 +12,14 @@ const PokemonCard = ({pokemon}) => {
     };
 
     return (
-        <div onClick={handleCardClick} className='cursor-pointer h-80 w-80 animate-fade-in transition ease-in-out delay-50 duration-500 hover:backdrop-blur-sm hover:bg-slate-800/25 flex flex-col backdrop-blur-md bg-gray-600/20 rounded-lg m-0 p-0'>
+        <div onClick={handleCardClick} className='cursor-pointer h-64 w-64 animate-fade-in transition ease-in-out delay-50 duration-500 hover:backdrop-blur-sm hover:bg-slate-800/25 flex flex-col backdrop-blur-md bg-gray-600/20 rounded-lg m-0 p-0'>
             <p className="m-0 p-0 mx-10 mt-5 font-bold size-4 text-sm">#{FormatId(pokemon.id)}</p>
             <p className="m-0 p-0 mx-10 font-bold text-lg">{CapitalizeFirstLetter(pokemon.species.name)}</p>
-            <div className='flex  justify-center mt-6'>
-            <img src={pokemon.sprites.other['official-artwork'].front_default} alt={pokemon.species.name} className="h-40 w-40 m-0 p-0"/>
+            <div className='flex  justify-center'>
+            <img src={pokemon.sprites.other['official-artwork'].front_default} alt={pokemon.species.name} className="h-32 w-32 m-0 p-0"/>
             </div>
             <div className="m-0 p-0">
-                <div className="m-0 p-0 w-auto  flex flex-row justify-between mx-10 mt-4 gap-4">
+                <div className="p-0 w-auto  flex flex-row justify-between mx-6 mt-2 gap=4">
                     {pokemonTypes.map((types, key) => (
                         <Type key={key} type={types.type.name}/>
                     ))}
