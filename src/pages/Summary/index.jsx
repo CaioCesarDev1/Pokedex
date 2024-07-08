@@ -6,6 +6,8 @@ import NaviBar from '../../components/NaviBar';
 import Type from "../../components/Type";
 import Weakness from "../../components/Weakness";
 import { CapitalizeFirstLetter, FormatId, FormatNumber } from '../../helper/helper';
+import PokemonCard from "../../components/PokemonCard";
+import Arrow from "../../assets/img/arrow.svg"
 
 import BaseStatBar from "../../components/BaseStatBar";
 import { usePokemon } from '../../context/pokemonContext';
@@ -95,15 +97,17 @@ const Summary = () => {
                         </div>
                     </div>
                     
-                    <div className=" h-full flex flex-row justify-center flex-wrap items-center w-full mb-16 gap-2 mr-10">
-                        <div className="w-64 h-64 bg-slate-800"></div>
-                        <div className="w-20 h-20 bg-red-700"></div>
-                        <div className="w-64 h-64 bg-slate-800"></div>
-                        <div className="w-20 h-20 bg-red-700"></div>
-                        <div className="w-64 h-64 bg-slate-800"></div>
+                    <div className="h-full w-full mb-32 rounded-lg backdrop-blur-md bg-gray-600/10">
+                    <div className=" h-full flex flex-row justify-center flex-wrap items-center w-full   gap-1 mr-10">
+                        <PokemonCard pokemon={pokemon}/>
+                        <img className="w-20 h-10" src={Arrow} alt="" />
+                        <PokemonCard pokemon={pokemon}/>
+                        <img className="w-20 h-10" src={Arrow} alt="" />
+                        <PokemonCard pokemon={pokemon}/>
 
                         
 
+                    </div>
                     </div>
                 </div>
             </div>

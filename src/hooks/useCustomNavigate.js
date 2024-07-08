@@ -5,7 +5,7 @@ const useCustomNavigate  = () => {
 
     const handleNavigate = (path, id) => {
         if (id) {
-            navigate(`${path}/${id}`);
+            navigate(`/${path}/${id}`);
         } else {
             navigate(`/${path}`);
         }
